@@ -1,67 +1,48 @@
 #include <iostream>
-#include <windows.h>  // Required for BOOL definition
-#include "C:/TwinCAT/AdsApi/TcAdsDll/Include/TcAdsDef.h"
-#include "C:/TwinCAT/AdsApi/TcAdsDll/Include/TcAdsAPI.h"
+#include "MatlabEngine.hpp"
+#include "MatlabDataArray.hpp"
 
-// Define BOOL explicitly to fix missing declaration error
-typedef int BOOL;
-
-class Meca500Controller {
-private:
-    long port;
-    AmsAddr addr;
-
-public:
-    Meca500Controller() {
-        port = AdsPortOpen();
-        AdsGetLocalAddress(&addr);
-
-        // Correct AMS Net ID assignment
-        addr.netId.b[0] = 192;
-        addr.netId.b[1] = 168;
-        addr.netId.b[2] = 0;
-        addr.netId.b[3] = 153;
-        addr.netId.b[4] = 1;
-        addr.netId.b[5] = 1;
-        addr.port = 851;
-    }
-
-    ~Meca500Controller() {
-        AdsPortClose();
-    }
-
-    void setupRobot() {
-        int activate = 1;
-        AdsSyncWriteReq(&addr, 0x4020, 0, sizeof(activate), &activate);
-        std::cout << "Robot activated." << std::endl;
-    }
-
-    void moveToPosition(float x, float y, float z, float rx, float ry, float rz) {
-        float values[6] = {x, y, z, rx, ry, rz};
-        AdsSyncWriteReq(&addr, 0x4020, 1, sizeof(values), values);
-        std::cout << "Moving to position: " << x << ", " << y << ", " << z << std::endl;
-    }
-
-    void shutdownRobot() {
-        int deactivate = 1;
-        AdsSyncWriteReq(&addr, 0x4020, 2, sizeof(deactivate), &deactivate);
-        std::cout << "Robot deactivated." << std::endl;
-    }
-};
+using namespace matlab::engine;
+using namespace matlab::data;
 
 int main() {
-    Meca500Controller robot;
-    robot.setupRobot();
+    try {
+        std::cout << "Starting MATLAB Engine...\n";
 
-    while (true) {
-        float x, y, z, rx, ry, rz;
-        std::cout << "Enter position values (x y z rx ry rz) or -1 to exit: ";
-        std::cin >> x;
-        if (x == -1) break;
-        std::cin >> y >> z >> rx >> ry >> rz;
-        robot.moveToPosition(x, y, z, rx, ry, rz);
+        // Start MATLAB Engine
+        std::unique_ptr<MATLABEngine> matlabPtr = startMATLAB();
+        std::cout << "MATLAB Engine started successfully.\n";
+
+        // Add path to MATLAB scripts
+        matlabPtr->eval(u"addpath('C:/Users/biom-admin/teleoperation/hapticteleoperation/matlabsrc')");
+        std::cout << "MATLAB path added.\n";
+
+        std::cout << "Enter position values (x y z rx ry rz) or -1 to exit:\n";
+        
+        while (true) {
+            double x, y, z, rx, ry, rz;
+            std::cin >> x;
+            if (x == -1) break;
+            std::cin >> y >> z >> rx >> ry >> rz;
+
+            // Create MATLAB array to store position values
+            ArrayFactory factory;
+            TypedArray<double> positionArray = factory.createArray<double>({1, 6}, {x, y, z, rx, ry, rz});
+
+            // Call MATLAB function
+            try {
+                matlabPtr->feval(u"meca1_SetPos", 0, {positionArray});
+                std::cout << "Moved to position: " << x << ", " << y << ", " << z << "\n";
+            } catch (const matlab::engine::MATLABException& e) {
+                std::cerr << "MATLAB function error: " << e.what() << std::endl;
+            }
+        }
+
+
+    } catch (const matlab::engine::EngineException& e) {
+        std::cerr << "MATLAB Engine Error: " << e.what() << std::endl;
     }
 
-    robot.shutdownRobot();
+    std::cout << "Shutting down MATLAB Engine...\n";
     return 0;
 }
