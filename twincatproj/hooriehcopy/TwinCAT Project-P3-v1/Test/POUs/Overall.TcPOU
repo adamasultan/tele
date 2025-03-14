@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="Overall" Id="{984d653e-b440-4573-a6a7-8cc0d900a7b1}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Overall
+VAR_INPUT
+	Joint_Angle				:	ARRAY[1..11]OF REAL;
+	ExternalStatecontrol 	:	BOOL;
+	ExternalMove_ID			:	UINT;
+END_VAR
+VAR_IN_OUT
+	Robot	:	Meca500SmPdo;	
+	Sent		:	BOOL;
+	Buffered	:	BOOL;
+END_VAR
+VAR_OUTPUT
+	Error		:	BOOL;
+END_VAR
+VAR
+	Output_Params	:	ARRAY[1..6] OF REAL;
+	FirstScan: BOOL:=0;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*Collect Inputs and store them locally*)
+Output_Params[1]:=Joint_Angle[1];
+Output_Params[2]:=Joint_Angle[2];
+Output_Params[3]:=Joint_Angle[3];
+Output_Params[4]:=Joint_Angle[4];
+Output_Params[5]:=Joint_Angle[5];
+Output_Params[6]:=Joint_Angle[6];
+
+
+(* If Values have change, Reinitialise Outputs*)
+
+IF FirstScan=0 OR Robot.Outputs._Move.SubIndex_001 <> Output_Params[1] OR Robot.Outputs._Move.SubIndex_002 <> Output_Params[2] OR Robot.Outputs._Move.SubIndex_003 <> Output_Params[3] OR Robot.Outputs._Move.SubIndex_004 <> Output_Params[4] OR Robot.Outputs._Move.SubIndex_005 <> Output_Params[5] OR Robot.Outputs._Move.SubIndex_006 <> Output_Params[6] THEN
+	Sent := FALSE;
+	Buffered := FALSE;
+END_IF;
+
+(*if not in legacy mode, Activated Setpoint*)
+IF Robot.Outputs.Motion_Control.Move_ID <> 0 THEN
+    Robot.Outputs.Motion_Control.SetPoint := TRUE;
+END_IF;
+
+(* To send _Move, send _Move ID *)
+IF NOT Buffered AND NOT Sent THEN
+    
+    Robot.Outputs._Move.Move_Command := REAL_TO_UDINT(Joint_Angle[7]);
+    Robot.Outputs._Move.SubIndex_001 := Output_Params[1];
+	Robot.Outputs._Move.SubIndex_002 := Output_Params[2];
+	Robot.Outputs._Move.SubIndex_003 := Output_Params[3];
+	Robot.Outputs._Move.SubIndex_004 := Output_Params[4];
+	Robot.Outputs._Move.SubIndex_005 := Output_Params[5];
+	Robot.Outputs._Move.SubIndex_006 := Output_Params[6];
+	
+    
+    IF ExternalStateControl THEN
+        IF ExternalMove_ID <> 0 AND ExternalMove_ID <> REAL_TO_UINT(Joint_Angle[8]) AND ExternalMove_ID <> REAL_TO_UINT(Joint_Angle[9]) THEN
+            Robot.Outputs.Motion_Control.Move_ID := ExternalMove_ID;
+            Sent := TRUE;
+        END_IF;
+        
+    ELSE (*Not External Control*)
+        IF Robot.Outputs.Motion_Control.Move_ID = REAL_TO_UINT(Joint_Angle[8]) THEN
+            Robot.Outputs.Motion_Control.Move_ID := REAL_TO_UINT(Joint_Angle[9]);
+        ELSIF Robot.Outputs.Motion_Control.Move_ID = REAL_TO_UINT(Joint_Angle[9]) THEN
+            Robot.Outputs.Motion_Control.Move_ID := REAL_TO_UINT(Joint_Angle[8]);
+        ELSIF Robot.Outputs.Motion_Control.Move_ID <> REAL_TO_UINT(Joint_Angle[8]) OR Robot.Outputs.Motion_Control.Move_ID <> REAL_TO_UINT(Joint_Angle[9]) THEN
+            Robot.Outputs.Motion_Control.Move_ID := REAL_TO_UINT(Joint_Angle[8]);
+        END_IF;
+        Sent := TRUE;
+    END_IF;
+END_IF;
+
+(* Check if _Move has been sent, if so, check if it was received *)
+IF Sent THEN
+    IF Robot.Outputs._Move.Move_Command = REAL_TO_UDINT(Joint_Angle[7]) THEN
+        IF Robot.Outputs._Move.SubIndex_001 = Output_Params[1] AND Robot.Outputs._Move.SubIndex_002 = Output_Params[2] AND Robot.Outputs._Move.SubIndex_003 = Output_Params[3] AND Robot.Outputs._Move.SubIndex_004 = Output_Params[4] AND Robot.Outputs._Move.SubIndex_005 = Output_Params[5] AND Robot.Outputs._Move.SubIndex_006 = Output_Params[6] THEN
+            IF Robot.Inputs.Motion_Status.Move_ID = Robot.Outputs.Motion_Control.Move_ID THEN
+                Buffered := TRUE;
+			//	Sent:=FALSE;
+            END_IF;
+        END_IF;
+    END_IF;
+END_IF;
+
+(*If External _Move ID is equal to Internal, raise an error*)
+IF ExternalMove_ID = REAL_TO_UINT(Joint_Angle[8]) OR ExternalMove_ID = REAL_TO_UINT(Joint_Angle[9]) THEN
+    Error := TRUE;
+END_IF;
+
+FirstScan := TRUE;]]></ST>
+    </Implementation>
+    <LineIds Name="Overall">
+      <LineId Id="21" Count="67" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

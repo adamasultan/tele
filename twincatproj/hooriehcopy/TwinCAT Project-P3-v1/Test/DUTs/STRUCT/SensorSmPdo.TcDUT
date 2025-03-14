@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="SensorSmPdo" Id="{34c326ff-dafe-4c96-8f78-8912594ed73b}">
+    <Declaration><![CDATA[TYPE SensorSmPdo :
+STRUCT
+	Inputs AT %I* : ECAT_BFT_SM_44E87B56;
+	Outputs AT %Q* : ECAT_BFT_SM_911AEFB2;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

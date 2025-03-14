@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="Meca500SmPdo" Id="{4768e137-634c-423b-9ffd-a16ec1eca900}">
+    <Declaration><![CDATA[TYPE Meca500SmPdo :
+STRUCT
+	//From Ethercat Device SmPdos, Create this Structure by Enabling Create Sm/Pdo variable , in the Ethercat tab/Advance/Behavior
+	Inputs 	AT %I* : ECAT_Meca500_SM_34A3A44A;	//for specific ESI firmware
+	Outputs AT %Q* : ECAT_Meca500_SM_A587449F;	//for specific ESI firmware
+	
+	Connect					:	BOOL;	//Switch between Init State & OP State
+	Connected				:	BOOL;	//Validate OP State
+	DisconnectFromEthercat	:	BOOL;	//Send SDO command to disconnect from EtherCat and  switch to TCP
+	ResettingPause			:	BOOL;	//Bit to indicate that cycling pause is in progress
+	Ready					:	BOOL;	//Bit to indicate Robot is activated, homed, not in error and not in pause
+	Stop					:	BOOL;	//Deactivate the robot motors
+
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

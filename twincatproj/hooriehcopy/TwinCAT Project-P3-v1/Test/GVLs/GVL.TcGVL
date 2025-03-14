@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL" Id="{d92ff098-3609-48cf-b708-f04ca5e9ed92}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	Robot1	:	Meca500SmPdo;
+	Robot2	:	Meca500SmPdo;
+	Sensor :    SensorSmPdo;
+	test:INT:=1;
+
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

@@ -1,0 +1,1195 @@
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.65">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{7C95A970-AC19-9039-230D-236766566C4C}">ECAT_Meca500_PDO_7C95A970</Name>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>Busy</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Activated</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>1</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Homed</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SimActivated</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>3</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Error</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{635164A2-167B-4296-6933-1D9119995446}">ECAT_Meca500_PDO_635164A2</Name>
+			<BitSize>96</BitSize>
+			<SubItem>
+				<Name>CheckPoint</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Move_ID</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>FIFO_Space</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>48</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Paused</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>EOB</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>65</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>EOM</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>66</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>FIFO_Cleared</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>67</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PStop</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>68</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{8D8A9F23-B52A-E935-4C9C-4D8C551F67C1}">ECAT_Meca500_PDO_8D8A9F23</Name>
+			<BitSize>192</BitSize>
+			<SubItem>
+				<Name>SubIndex_001</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SubIndex_002</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SubIndex_003</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SubIndex_004</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>96</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SubIndex_005</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>128</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SubIndex_006</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>160</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{34A3A44A-7948-7FCC-C4B0-719B9F3D0491}">ECAT_Meca500_SM_34A3A44A</Name>
+			<BitSize>512</BitSize>
+			<SubItem>
+				<Name>Robot_Status</Name>
+				<Type GUID="{7C95A970-AC19-9039-230D-236766566C4C}">ECAT_Meca500_PDO_7C95A970</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Motion_Status</Name>
+				<Type GUID="{635164A2-167B-4296-6933-1D9119995446}">ECAT_Meca500_PDO_635164A2</Type>
+				<BitSize>96</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Joint_Set</Name>
+				<Type GUID="{8D8A9F23-B52A-E935-4C9C-4D8C551F67C1}">ECAT_Meca500_PDO_8D8A9F23</Type>
+				<BitSize>192</BitSize>
+				<BitOffs>128</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>End_Effector_Pose</Name>
+				<Type GUID="{8D8A9F23-B52A-E935-4C9C-4D8C551F67C1}">ECAT_Meca500_PDO_8D8A9F23</Type>
+				<BitSize>192</BitSize>
+				<BitOffs>320</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{E0DDE41F-A6FA-262A-74C0-9C152D2F2974}">ECAT_BFT_PDO_E0DDE41F</Name>
+			<BitSize>616</BitSize>
+			<SubItem>
+				<Name>Status</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Warnings_Errors_Fatals</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Force_x</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>40</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Force_y</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>72</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Force_z</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>104</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Torque_x</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>136</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Torque_y</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>168</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Torque_z</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>200</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Force_Torque_Saturated</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>232</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Acceleration_x</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>248</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Acceleration_y</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>280</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Acceleration_z</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>312</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Acceleration_Saturated</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>344</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Angular_Rate_x</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>352</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Angular_Rate_y</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>384</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Angular_Rate_z</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>416</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Angular_Rate_Saturated</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>448</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Temperature</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>456</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Orientation_Estimate_x</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>488</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Orientation_Estimate_y</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>520</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Orientation_Estimate_z</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>552</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Orientation_Estimate_w</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>584</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{44E87B56-2FDB-69C3-A28A-8FFFCE71EE30}">ECAT_BFT_SM_44E87B56</Name>
+			<BitSize>616</BitSize>
+			<SubItem>
+				<Name>Sensor_Data</Name>
+				<Type GUID="{E0DDE41F-A6FA-262A-74C0-9C152D2F2974}">ECAT_BFT_PDO_E0DDE41F</Type>
+				<BitSize>616</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{20AB0CC1-E73F-C5E8-D397-6FB6C6638355}">ECAT_Meca500_PDO_20AB0CC1</Name>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>Deactivate</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Activate</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>1</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Home</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Reset_Error</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>3</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Sim_Mode</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>4</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{5DBCE8FA-FB51-938B-CF73-676C9CAB2036}">ECAT_Meca500_PDO_5DBCE8FA</Name>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>Move_ID</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SetPoint</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Pause</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>17</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Clear_Move</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>18</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Reset_PStop</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>19</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{6E98024C-A60B-611C-A9F6-A8483710A700}">ECAT_Meca500_PDO_6E98024C</Name>
+			<BitSize>224</BitSize>
+			<SubItem>
+				<Name>Move_Command</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SubIndex_001</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SubIndex_002</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SubIndex_003</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>96</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SubIndex_004</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>128</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SubIndex_005</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>160</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SubIndex_006</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>192</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{A587449F-3ABB-D61C-F88E-980D283F7AF1}">ECAT_Meca500_SM_A587449F</Name>
+			<BitSize>288</BitSize>
+			<SubItem>
+				<Name>Robot_Control</Name>
+				<Type GUID="{20AB0CC1-E73F-C5E8-D397-6FB6C6638355}">ECAT_Meca500_PDO_20AB0CC1</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Motion_Control</Name>
+				<Type GUID="{5DBCE8FA-FB51-938B-CF73-676C9CAB2036}">ECAT_Meca500_PDO_5DBCE8FA</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>_Move</Name>
+				<Type GUID="{6E98024C-A60B-611C-A9F6-A8483710A700}">ECAT_Meca500_PDO_6E98024C</Type>
+				<BitSize>224</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{911AEFB2-8259-1326-9E6A-0DD37BEFAB5C}">ECAT_BFT_SM_911AEFB2</Name>
+			<BitSize>8</BitSize>
+			<SubItem>
+				<Name>Digital_Output_Digital_Output</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000003}">SINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-00200000000C}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..11] OF BIT</Name>
+			<BitSize>12</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>12</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-00200000001B}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..26] OF BIT</Name>
+			<BitSize>27</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>27</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-00200000001A}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..25] OF BIT</Name>
+			<BitSize>26</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>26</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000008}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..0] OF BYTE</Name>
+			<BitSize>8</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>1</Elements>
+			</ArrayInfo>
+		</DataType>
+	</DataTypes>
+	<ImageDatas>
+		<ImageData Id="1000">424de6000000000000007600000028000000100000000e000000010004000000000070000000c21e0000c21e000000000000000000006865630089786200c18c5600c89a64009f918300a9a7a600d7b69400e2d1bf00e2e2e200f4e9db00f7efe700f3efef00f7f7ef00f7f7f700fff7f700ffffff00ffffffffffffffffffffffffffffffff63fffff66fffff44327fffb639fff704723fff4626fff407f329f80522af800df726f505626f505ffc22a00ba22a00bfff62604ff62605ffff92358ff92358fffff337ffff337ffffff969ffff769fffffffffffffffffffffffffffffffffff</ImageData>
+		<ImageData Id="1001">424d54010000000000007200000028000000100000000e0000000100080000000000e2000000c30e0000c30e00000f0000000f000000565556000200000047464600242322000c09050006050300878068008da8fe001647f6003e67f500ffffff006b6b6b003535350014141400000000000a0a0a0a0a0a0a0a0a0c0c0a0a0a0a0a0a0a0a0a0a0a0a000e0e0e040a0a0a0a0a0a0a0a0a0a010e0e0e030a0a0a0a0a0a0a0a0a020e0e0e0d0a0a0a0c0a0a0a0a0a0a0a0e0e050a0a0a000e0e020a0a0a0a0a040e040a0a0a0a0a030e0e0a0a0a0a0a0e0e060a08090a0a0a0e0e0a0a0a0a0a0a020a0a090908070a040e030a0a0e0e0b0a0a0a0809070a0a010e0d0a0a010e0e050a0a0a0a0a0a0a0e0e030a0a0a0c0e0e0e030a0a0a0a0a0e0e030a0a0a0a0b0e0e0e0e0e0e000a0e0e0d0a0a0a0a0a0a020e0e0e0e020a0e0e0a0a0a0a0a0a0a0a0a0b0d0b0a0a020a0a0a0000</ImageData>
+	</ImageDatas>
+	<Project ProjectGUID="{4ACDEECC-F6ED-41A5-AE08-F0C75E7F4F84}" Target64Bit="true" ShowHideConfigurations="#x6">
+		<System>
+			<Tasks>
+				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
+					<Name>PlcTask</Name>
+				</Task>
+			</Tasks>
+		</System>
+		<Plc>
+			<Project GUID="{2F10D88D-32E9-4DC4-8AFD-54131A84A407}" Name="Test" PrjFilePath="Test\Test.plcproj" TmcFilePath="Test\Test.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Test\Test.tmc" TmcHash="{402EBE69-A879-8C37-A715-FF9BFFCC8CEE}">
+					<Name>Test Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Vars VarGrpType="1">
+						<Name>PlcTask Inputs</Name>
+						<Var>
+							<Name>GVL.Robot1.Inputs</Name>
+							<Comment><![CDATA[for specific ESI firmware]]></Comment>
+							<Type GUID="{34A3A44A-7948-7FCC-C4B0-719B9F3D0491}">ECAT_Meca500_SM_34A3A44A</Type>
+						</Var>
+						<Var>
+							<Name>GVL.Robot2.Inputs</Name>
+							<Comment><![CDATA[for specific ESI firmware]]></Comment>
+							<Type GUID="{34A3A44A-7948-7FCC-C4B0-719B9F3D0491}">ECAT_Meca500_SM_34A3A44A</Type>
+						</Var>
+						<Var>
+							<Name>GVL.Sensor.Inputs</Name>
+							<Type GUID="{44E87B56-2FDB-69C3-A28A-8FFFCE71EE30}">ECAT_BFT_SM_44E87B56</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="2" AreaNo="1">
+						<Name>PlcTask Outputs</Name>
+						<Var>
+							<Name>GVL.Robot1.Outputs</Name>
+							<Comment><![CDATA[for specific ESI firmware]]></Comment>
+							<Type GUID="{A587449F-3ABB-D61C-F88E-980D283F7AF1}">ECAT_Meca500_SM_A587449F</Type>
+						</Var>
+						<Var>
+							<Name>GVL.Robot2.Outputs</Name>
+							<Comment><![CDATA[for specific ESI firmware]]></Comment>
+							<Type GUID="{A587449F-3ABB-D61C-F88E-980D283F7AF1}">ECAT_Meca500_SM_A587449F</Type>
+						</Var>
+						<Var>
+							<Name>GVL.Sensor.Outputs</Name>
+							<Type GUID="{911AEFB2-8259-1326-9E6A-0DD37BEFAB5C}">ECAT_BFT_SM_911AEFB2</Type>
+						</Var>
+					</Vars>
+					<Contexts>
+						<Context>
+							<Id>0</Id>
+							<Name>PlcTask</Name>
+							<ManualConfig>
+								<OTCID>#x02010030</OTCID>
+							</ManualConfig>
+							<Priority>20</Priority>
+							<CycleTime>10000000</CycleTime>
+						</Context>
+					</Contexts>
+					<TaskPouOids>
+						<TaskPouOid Prio="20" OTCID="#x08502001"/>
+					</TaskPouOids>
+				</Instance>
+			</Project>
+		</Plc>
+		<Io>
+			<Device Id="1" DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="192.168.0.153.2.1" RemoteName="Device 1 (EtherCAT)" InfoImageId="2">
+				<Name>Device 1 (EtherCAT)</Name>
+				<AddressInfo>
+					<Pnp>
+						<DeviceDesc>Ethernet (TwinCAT-Intel PCI Ethernet Adapter (Gigab</DeviceDesc>
+						<DeviceName>\DEVICE\{A5CFFDE7-4812-43A2-B085-7AE42684FAE4}</DeviceName>
+						<DeviceData>047c164d460b</DeviceData>
+					</Pnp>
+				</AddressInfo>
+				<Image Id="1" AddrType="9" ImageType="3">
+					<Name>Image</Name>
+				</Image>
+				<Box Id="1" BoxType="9099" BoxFlags="#x00000020">
+					<Name>Box 1 (Meca500)</Name>
+					<ImageId>1000</ImageId>
+					<EtherCAT SlaveType="2" PdiType="#x0e80" MboxDataLinkLayer="true" CycleMBoxPolling="true" CoeType="39" VendorId="#x00ecade1" ProductCode="#x0004d500" RevisionNo="#x00000001" InfoDataAddr="true" TimeoutStateChange1="2000" TimeoutStateChange2="9000" TimeoutMailbox2="2000" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="Meca500" Desc="Meca500" SmPdoVariables="true" PortABoxInfo="#x00ffffff">
+						<SyncMan>001080002600010001000000240080008000001026010000</SyncMan>
+						<SyncMan>801080002200010002000000240080008000801022010000</SyncMan>
+						<SyncMan>001124006400010003000000000000003c00001164010000</SyncMan>
+						<SyncMan>00144000200001000400000000000000fc00001420010000</SyncMan>
+						<Fmmu>0000000000000000001100020100000001000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000001400010100000002000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000000000010000000003000000000000000000000000000000</Fmmu>
+						<SuTask>#x02010030</SuTask>
+						<DcMode>53796e6368726f6e0000000000000000534d2d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>4443000000000000000000000000000044432d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000030100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<Pdo Name="Robot Status" Index="#x1a00" Flags="#x0011" SyncMan="3">
+							<Entry Name="Busy" Index="#x6010" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Activated" Index="#x6010" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Homed" Index="#x6010" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="SimActivated" Index="#x6010" Sub="#x05">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-00200000000C}">ARRAY [0..11] OF BIT</Type>
+							</Entry>
+							<Entry Name="Error" Index="#x6010" Sub="#x01">
+								<Type>UINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Motion Status" Index="#x1a01" Flags="#x0011" SyncMan="3">
+							<Entry Name="CheckPoint" Index="#x6015" Sub="#x01">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Move ID" Index="#x6015" Sub="#x02">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="FIFO Space" Index="#x6015" Sub="#x03">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Paused" Index="#x6015" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="EOB" Index="#x6015" Sub="#x05">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="EOM" Index="#x6015" Sub="#x06">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="FIFO Cleared" Index="#x6015" Sub="#x07">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="PStop" Index="#x6015" Sub="#x08">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-00200000001B}">ARRAY [0..26] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Joint Set" Index="#x1a02" Flags="#x0010" SyncMan="3">
+							<Entry Name="SubIndex 001" Index="#x6030" Sub="#x01">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 002" Index="#x6030" Sub="#x02">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 003" Index="#x6030" Sub="#x03">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 004" Index="#x6030" Sub="#x04">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 005" Index="#x6030" Sub="#x05">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 006" Index="#x6030" Sub="#x06">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="End-Effector Pose" Index="#x1a03" Flags="#x0010" SyncMan="3">
+							<Entry Name="SubIndex 001" Index="#x6031" Sub="#x01">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 002" Index="#x6031" Sub="#x02">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 003" Index="#x6031" Sub="#x03">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 004" Index="#x6031" Sub="#x04">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 005" Index="#x6031" Sub="#x05">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 006" Index="#x6031" Sub="#x06">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Joint velocities" Index="#x1a04" Flags="#x0010">
+							<Entry Name="SubIndex 001" Index="#x6032" Sub="#x01">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 002" Index="#x6032" Sub="#x02">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 003" Index="#x6032" Sub="#x03">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 004" Index="#x6032" Sub="#x04">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 005" Index="#x6032" Sub="#x05">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 006" Index="#x6032" Sub="#x06">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Torque Ratio" Index="#x1a05" Flags="#x0010">
+							<Entry Name="SubIndex 001" Index="#x6033" Sub="#x01">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 002" Index="#x6033" Sub="#x02">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 003" Index="#x6033" Sub="#x03">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 004" Index="#x6033" Sub="#x04">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 005" Index="#x6033" Sub="#x05">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 006" Index="#x6033" Sub="#x06">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Accelerometer" Index="#x1a06" Flags="#x0010">
+							<Entry Name="X" Index="#x6040" Sub="#x01">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Y" Index="#x6040" Sub="#x02">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Z" Index="#x6040" Sub="#x03">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Gripper Status" Index="#x1a07" Flags="#x0010">
+							<Entry Name="Detected" Index="#x6045" Sub="#x01">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Homed" Index="#x6045" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Holding Part" Index="#x6045" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Limit Reached" Index="#x6045" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Error" Index="#x6045" Sub="#x05">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Overload" Index="#x6045" Sub="#x06">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-00200000001A}">ARRAY [0..25] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Configurations" Index="#x1a08" Flags="#x0010">
+							<Entry Name="A1" Index="#x6046" Sub="#x01">
+								<Type>SINT</Type>
+							</Entry>
+							<Entry Name="A3" Index="#x6046" Sub="#x02">
+								<Type>SINT</Type>
+							</Entry>
+							<Entry Name="A5" Index="#x6046" Sub="#x03">
+								<Type>SINT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000008}">ARRAY [0..0] OF BYTE</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Robot Control" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="2">
+							<Entry Name="Deactivate" Index="#x7200" Sub="#x01">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Activate" Index="#x7200" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Home" Index="#x7200" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Reset Error" Index="#x7200" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Sim Mode" Index="#x7200" Sub="#x05">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-00200000001B}">ARRAY [0..26] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Motion Control" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="2">
+							<Entry Name="Move ID" Index="#x7310" Sub="#x01">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="SetPoint" Index="#x7310" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Pause" Index="#x7310" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Clear Move" Index="#x7310" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Reset PStop" Index="#x7310" Sub="#x05">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-00200000000C}">ARRAY [0..11] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Move" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="2">
+							<Entry Name="Move Command" Index="#x7305">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="SubIndex 001" Index="#x7306" Sub="#x01">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 002" Index="#x7306" Sub="#x02">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 003" Index="#x7306" Sub="#x03">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 004" Index="#x7306" Sub="#x04">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 005" Index="#x7306" Sub="#x05">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 006" Index="#x7306" Sub="#x06">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<CoeProfile ProfileNo="5001"/>
+					</EtherCAT>
+				</Box>
+				<Box Id="2" BoxType="9099" BoxFlags="#x00000020">
+					<Name>Box 2 (Meca500)</Name>
+					<ImageId>1000</ImageId>
+					<EtherCAT SlaveType="2" PdiType="#x0e80" MboxDataLinkLayer="true" CycleMBoxPolling="true" CoeType="39" VendorId="#x00ecade1" ProductCode="#x0004d500" RevisionNo="#x00000001" InfoDataAddr="true" TimeoutStateChange1="2000" TimeoutStateChange2="9000" TimeoutMailbox2="2000" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="Meca500" Desc="Meca500" SmPdoVariables="true" PortABoxInfo="#x01000001">
+						<SyncMan>001080002600010001000000240080008000001026010000</SyncMan>
+						<SyncMan>801080002200010002000000240080008000801022010000</SyncMan>
+						<SyncMan>001124006400010003000000000000002400001164010000</SyncMan>
+						<SyncMan>001440002000010004000000000000004000001420010000</SyncMan>
+						<Fmmu>0000000000000000001100020100000001000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000001400010100000002000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000000000010000000003000000000000000000000000000000</Fmmu>
+						<SuTask>#x02010030</SuTask>
+						<DcMode>53796e6368726f6e0000000000000000534d2d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>4443000000000000000000000000000044432d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000030100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<Pdo Name="Robot Status" Index="#x1a00" Flags="#x0011" SyncMan="3">
+							<Entry Name="Busy" Index="#x6010" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Activated" Index="#x6010" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Homed" Index="#x6010" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="SimActivated" Index="#x6010" Sub="#x05">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-00200000000C}">ARRAY [0..11] OF BIT</Type>
+							</Entry>
+							<Entry Name="Error" Index="#x6010" Sub="#x01">
+								<Type>UINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Motion Status" Index="#x1a01" Flags="#x0011" SyncMan="3">
+							<Entry Name="CheckPoint" Index="#x6015" Sub="#x01">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Move ID" Index="#x6015" Sub="#x02">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="FIFO Space" Index="#x6015" Sub="#x03">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Paused" Index="#x6015" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="EOB" Index="#x6015" Sub="#x05">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="EOM" Index="#x6015" Sub="#x06">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="FIFO Cleared" Index="#x6015" Sub="#x07">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="PStop" Index="#x6015" Sub="#x08">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-00200000001B}">ARRAY [0..26] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Joint Set" Index="#x1a02" Flags="#x0010" SyncMan="3">
+							<Entry Name="SubIndex 001" Index="#x6030" Sub="#x01">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 002" Index="#x6030" Sub="#x02">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 003" Index="#x6030" Sub="#x03">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 004" Index="#x6030" Sub="#x04">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 005" Index="#x6030" Sub="#x05">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 006" Index="#x6030" Sub="#x06">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="End-Effector Pose" Index="#x1a03" Flags="#x0010" SyncMan="3">
+							<Entry Name="SubIndex 001" Index="#x6031" Sub="#x01">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 002" Index="#x6031" Sub="#x02">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 003" Index="#x6031" Sub="#x03">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 004" Index="#x6031" Sub="#x04">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 005" Index="#x6031" Sub="#x05">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 006" Index="#x6031" Sub="#x06">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Joint velocities" Index="#x1a04" Flags="#x0010">
+							<Entry Name="SubIndex 001" Index="#x6032" Sub="#x01">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 002" Index="#x6032" Sub="#x02">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 003" Index="#x6032" Sub="#x03">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 004" Index="#x6032" Sub="#x04">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 005" Index="#x6032" Sub="#x05">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 006" Index="#x6032" Sub="#x06">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Torque Ratio" Index="#x1a05" Flags="#x0010">
+							<Entry Name="SubIndex 001" Index="#x6033" Sub="#x01">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 002" Index="#x6033" Sub="#x02">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 003" Index="#x6033" Sub="#x03">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 004" Index="#x6033" Sub="#x04">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 005" Index="#x6033" Sub="#x05">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 006" Index="#x6033" Sub="#x06">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Accelerometer" Index="#x1a06" Flags="#x0010">
+							<Entry Name="X" Index="#x6040" Sub="#x01">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Y" Index="#x6040" Sub="#x02">
+								<Type>DINT</Type>
+							</Entry>
+							<Entry Name="Z" Index="#x6040" Sub="#x03">
+								<Type>DINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Gripper Status" Index="#x1a07" Flags="#x0010">
+							<Entry Name="Detected" Index="#x6045" Sub="#x01">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Homed" Index="#x6045" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Holding Part" Index="#x6045" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Limit Reached" Index="#x6045" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Error" Index="#x6045" Sub="#x05">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Overload" Index="#x6045" Sub="#x06">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-00200000001A}">ARRAY [0..25] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Configurations" Index="#x1a08" Flags="#x0010">
+							<Entry Name="A1" Index="#x6046" Sub="#x01">
+								<Type>SINT</Type>
+							</Entry>
+							<Entry Name="A3" Index="#x6046" Sub="#x02">
+								<Type>SINT</Type>
+							</Entry>
+							<Entry Name="A5" Index="#x6046" Sub="#x03">
+								<Type>SINT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000008}">ARRAY [0..0] OF BYTE</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Robot Control" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="2">
+							<Entry Name="Deactivate" Index="#x7200" Sub="#x01">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Activate" Index="#x7200" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Home" Index="#x7200" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Reset Error" Index="#x7200" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Sim Mode" Index="#x7200" Sub="#x05">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-00200000001B}">ARRAY [0..26] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Motion Control" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="2">
+							<Entry Name="Move ID" Index="#x7310" Sub="#x01">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="SetPoint" Index="#x7310" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Pause" Index="#x7310" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Clear Move" Index="#x7310" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Reset PStop" Index="#x7310" Sub="#x05">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-00200000000C}">ARRAY [0..11] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Move" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="2">
+							<Entry Name="Move Command" Index="#x7305">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="SubIndex 001" Index="#x7306" Sub="#x01">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 002" Index="#x7306" Sub="#x02">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 003" Index="#x7306" Sub="#x03">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 004" Index="#x7306" Sub="#x04">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 005" Index="#x7306" Sub="#x05">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="SubIndex 006" Index="#x7306" Sub="#x06">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<CoeProfile ProfileNo="5001"/>
+					</EtherCAT>
+				</Box>
+				<Box Id="3" BoxType="9099" BoxFlags="#x00000020">
+					<Name>Box 3 (BFT-MEDS-ECAT-M8)</Name>
+					<ImageId>1001</ImageId>
+					<EtherCAT SlaveType="2" PdiType="#x0280" MboxDataLinkLayer="true" CycleMBoxPolling="true" CoeType="3" FoeType="1" VendorId="#x0000b07a" ProductCode="#x00000001" RevisionNo="#x00000003" InfoDataAddr="true" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="BFT" Desc="BFT-MEDS-ECAT-M8" SmPdoVariables="true" PortABoxInfo="#x01000002">
+						<SyncMan>001080002600010001000000000000008000001026010000</SyncMan>
+						<SyncMan>801080002200010002000000000000008000801022010000</SyncMan>
+						<SyncMan>001101002400010003000000000000000000001124010000</SyncMan>
+						<SyncMan>80114d002000010004000000000000000000801120010000</SyncMan>
+						<Fmmu>0000000000000000001100020100000001000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000801100010100000002000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000000000010000000003000000000000000000000000000000</Fmmu>
+						<BootStrapData>0010800080108000</BootStrapData>
+						<SuTask>#x02010030</SuTask>
+						<MBoxUserCmdData>0200030009000000260000000300000000000000000000000000000000000000201080010100000001466f72636520546f727175652043616c6962726174696f6e204d61747269782041637469766500</MBoxUserCmdData>
+						<MBoxUserCmdData>02000300090000000b00000003000000000000000000000000000000000000002006800201000000014649522064697361626c6500</MBoxUserCmdData>
+						<MBoxUserCmdData>020003000a0000000b00000003000000000000000000000000000000000000002006800102000000000253696e63206c656e67746800</MBoxUserCmdData>
+						<MBoxUserCmdData>02000300090000000b00000003000000000000000000000000000000000000002006800301000000014641535420656e61626c6500</MBoxUserCmdData>
+						<Pdo Name="Sensor Data" Index="#x1a00" Flags="#x0011" SyncMan="3">
+							<Entry Name="Status" Index="#x6000" Sub="#x01">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="Warnings Errors Fatals" Index="#x6000" Sub="#x02">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Force x" Index="#x6000" Sub="#x04">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Force y" Index="#x6000" Sub="#x05">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Force z" Index="#x6000" Sub="#x06">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Torque x" Index="#x6000" Sub="#x07">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Torque y" Index="#x6000" Sub="#x08">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Torque z" Index="#x6000" Sub="#x09">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Force Torque Saturated" Index="#x6000" Sub="#x0a">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Acceleration x" Index="#x6000" Sub="#x0b">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Acceleration y" Index="#x6000" Sub="#x0c">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Acceleration z" Index="#x6000" Sub="#x0d">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Acceleration Saturated" Index="#x6000" Sub="#x0e">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="Angular Rate x" Index="#x6000" Sub="#x0f">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Angular Rate y" Index="#x6000" Sub="#x10">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Angular Rate z" Index="#x6000" Sub="#x11">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Angular Rate Saturated" Index="#x6000" Sub="#x12">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="Temperature" Index="#x6000" Sub="#x13">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Orientation Estimate x" Index="#x6000" Sub="#x14">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Orientation Estimate y" Index="#x6000" Sub="#x15">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Orientation Estimate z" Index="#x6000" Sub="#x16">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="Orientation Estimate w" Index="#x6000" Sub="#x17">
+								<Type>REAL</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="Digital Output" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="2">
+							<Entry Name="Digital Output" Index="#x7000">
+								<Type>SINT</Type>
+							</Entry>
+						</Pdo>
+						<CoeProfile ProfileNo="5001"/>
+					</EtherCAT>
+				</Box>
+				<EtherCAT/>
+			</Device>
+		</Io>
+	</Project>
+	<Mappings>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
+		<OwnerA Name="TIPC^Test^Test Instance">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Box 1 (Meca500)">
+				<Link VarA="PlcTask Inputs^GVL.Robot1.Inputs" VarB="SmPdoVariables^Meca500_SM_3"/>
+				<Link VarA="PlcTask Outputs^GVL.Robot1.Outputs" VarB="SmPdoVariables^Meca500_SM_2"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Box 2 (Meca500)">
+				<Link VarA="PlcTask Inputs^GVL.Robot2.Inputs" VarB="SmPdoVariables^Meca500_SM_3"/>
+				<Link VarA="PlcTask Outputs^GVL.Robot2.Outputs" VarB="SmPdoVariables^Meca500_SM_2"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Box 3 (BFT-MEDS-ECAT-M8)">
+				<Link VarA="PlcTask Inputs^GVL.Sensor.Inputs" VarB="SmPdoVariables^BFT_SM_3"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
+</TcSmProject>

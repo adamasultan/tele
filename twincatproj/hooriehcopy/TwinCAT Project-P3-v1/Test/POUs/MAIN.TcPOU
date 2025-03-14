@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{c68aae4e-7885-4589-b747-eb738833ac64}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	Values					:	ARRAY[1..11]OF REAL := [170,-30,150,0,90,0,2,32020,32021,0,0];	
+	FirstScan				:	BOOL				:=  0;		
+	StepSquareMove 			: 	INT 				:=  2;
+	Select 					: 	INT 				:=  0;
+	Overall 				: 	Overall;
+	Error 					: 	BOOL 				:=  0;
+	Sent 					: 	BOOL 				:=  0;
+	Buffered 				: 	BOOL 				:=  0;	
+	ExternalStatecontrol 	:	BOOL				:=  0;
+	ExternalMove_ID			:	UINT				:=  0;	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Select := REAL_TO_INT(Values[11]);
+StepSquareMove:=REAL_TO_INT(Values[10]);
+//pos[1]:=GVL.Robot1.Inputs.End_Effector_Pose.SubIndex_001;
+//pos[2]:=GVL.Robot1.Inputs.End_Effector_Pose.SubIndex_002;
+//pos[3]:=GVL.Robot1.Inputs.End_Effector_Pose.SubIndex_003;
+//pos[4]:=GVL.Robot1.Inputs.End_Effector_Pose.SubIndex_004;
+//pos[5]:=GVL.Robot1.Inputs.End_Effector_Pose.SubIndex_005;
+//pos[6]:=GVL.Robot1.Inputs.End_Effector_Pose.SubIndex_006;
+			
+//If ready to send move command
+IF Select = 1 AND StepSquareMove = 1 THEN  // Robot1
+	//send the appropriate values to move robot1
+	//Joint_Angle: info for moving: this is an array of length 11 but only item 1-9 are used for movement			
+	Overall(
+			Joint_Angle:= Values, 
+			ExternalStatecontrol:=0 , 
+			ExternalMove_ID:=0 ,
+			Robot:= GVL.Robot1 , 
+			Error=> Error, 
+			Sent:= Sent, 
+			Buffered:= Buffered		
+	);
+	//If robot1 move is completed reset values
+	IF Sent AND Buffered THEN
+		Values[10]:=2;
+		Sent:=0;
+		Buffered:=0;
+	END_IF 
+	
+ELSIF Select = 2 AND StepSquareMove = 1 THEN // Robot2
+	//send the appropriate values to move robot2
+	//Joint_Angle: info for moving: this is an array of length 11 but only item 1-9 are used for movement			
+	Overall(
+			Joint_Angle:= Values, 
+			ExternalStatecontrol:=0 , 
+			ExternalMove_ID:=0 ,
+			Robot:= GVL.Robot2 , 
+			Error=> Error, 
+			Sent:= Sent, 
+			Buffered:= Buffered		
+	);
+	//If robot2 move is completed reset values
+	IF Sent AND Buffered THEN
+		Values[10]:=2;
+		Sent:=0;
+		Buffered:=0;
+	END_IF 
+END_IF
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="138" Count="0" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="86" Count="4" />
+      <LineId Id="64" Count="6" />
+      <LineId Id="72" Count="13" />
+      <LineId Id="157" Count="0" />
+      <LineId Id="139" Count="0" />
+      <LineId Id="141" Count="15" />
+      <LineId Id="140" Count="0" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="104" Count="0" />
+      <LineId Id="103" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
