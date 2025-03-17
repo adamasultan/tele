@@ -19,20 +19,15 @@ public:
         }
         
         AdsGetLocalAddress(&addr);
-        addr.netId.b[0] = 192;
-        addr.netId.b[1] = 168;
-        addr.netId.b[2] = 0;
-        addr.netId.b[3] = 153;
-        addr.netId.b[4] = 1;  // FIXED AMS Net ID
-        addr.netId.b[5] = 1;  // FIXED AMS Net ID
+        addr.netId = {192, 168, 0, 153, 1, 1}; // Ensuring it's correctly set
         addr.port = 851;
 
-        long status = AdsSyncReadReq(&addr, ADSIGRP_SYM_VERSION, 0, 0, nullptr);
-        if (status == 0) {
-            std::cout << "ADS connection established!" << std::endl;
-        } else {
+
+        long status = AdsSyncReadStateReq(&addr, nullptr);
+        if (status != 0) {
             std::cout << "ADS connection failed! Error: " << status << std::endl;
         }
+
     }
 
     ~Meca500Controller() {
