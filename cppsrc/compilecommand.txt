@@ -1,1 +1,0 @@
-cl main.cpp /EHsc /I"C:\TwinCAT\AdsApi\TcAdsDll\Include" /I"C:\Program Files\MATLAB\R2022b\extern\include" /link /LIBPATH:"C:\TwinCAT\AdsApi\TcAdsDll\x64\lib" /LIBPATH:"C:\Program Files\MATLAB\R2022b\extern\lib\win64\microsoft" TcAdsDll.lib libMatlabEngine.lib libMatlabDataArray.lib /out:main.exe
