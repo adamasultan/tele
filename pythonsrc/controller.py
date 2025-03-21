@@ -1,13 +1,7 @@
-import matlab.engine
-import threading
-import time
-import sys
+from matlabconnection import setup_matlab_vars
+import matlab
+eng, adsClt, Move_command, R1_j1, R1_j2, R1_j3, R1_j4, R1_j5, R1_j6 = setup_matlab_vars()
 
-# Start MATLAB engine
-eng = matlab.engine.start_matlab()
-eng.addpath("../matlabsrc", nargout=0)
-adsClt = eng.start_ads_client()
-print_lock = threading.Lock()
 
 
 def matlab_global_vars():
@@ -38,8 +32,7 @@ def setup_matlab_vars():
 def cli_movement(Move_command, R1_j1, R1_j2, R1_j3, R1_j4, R1_j5, R1_j6):
     while True:
         try:
-            with print_lock:
-                input_string = input("\nEnter joint positions (or 'exit'): ").strip()
+            input_string = input("\nEnter joint positions (or 'exit'): ").strip()
             float_array = []
             for val in input_string.split():
                 float_array.append(float(val))

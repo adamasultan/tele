@@ -1,11 +1,9 @@
-# joint_monitor.py
-import matlab.engine
-import time
+# joint_monitor.pyimport time
 
-# Start MATLAB engine
-eng = matlab.engine.start_matlab()
-eng.addpath("../matlabsrc", nargout=0)
-adsClt = eng.start_ads_client()
+from matlabconnection import setup_matlab_vars
+
+eng, adsClt, Move_command, R1_j1, R1_j2, R1_j3, R1_j4, R1_j5, R1_j6 = setup_matlab_vars()
+
 
 # Set up print lock (even if unused here, keeps logic compatible)
 print_lock = None
@@ -17,7 +15,6 @@ def print_joint_list_forever(R1_j1, R1_j2, R1_j3, R1_j4, R1_j5, R1_j6):
             R1_Joint = eng.meca1_GetJoints(adsClt, R1_j1, R1_j2, R1_j3, R1_j4, R1_j5, R1_j6)
             rounded_list = [round(value, 2) for value in R1_Joint[0]]
             print(f"\rCurrent Joint Positions: {rounded_list}", end="", flush=True)
-            time.sleep(0.2)
         except KeyboardInterrupt:
             print("\nStopping joint monitor...")
             break
