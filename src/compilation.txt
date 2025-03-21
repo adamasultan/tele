@@ -1,0 +1,1 @@
+cl forcedim_wrapper.cpp /LD /I"../forcedimension/sdk-3.17.6/include" /link /LIBPATH:"../forcedimension/sdk-3.17.6/lib" dhdms64.lib drdms64.lib

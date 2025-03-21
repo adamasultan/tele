@@ -18,11 +18,10 @@ function meca1_MoveJoint(adsClt, Move_command, Jmovement, R1_j1, R1_j2, R1_j3, R
     
     % Clear previous move command
     adsClt.WriteAny(Move_command.IndexGroup, Move_command.IndexOffset, single(zeros(1, length(values))));
-    pause(0.1);  % Small delay to ensure TwinCAT processes it
+    
 
     % Send new movement command
     adsClt.WriteAny(Move_command.IndexGroup, Move_command.IndexOffset, single(values));
     
     % Pause to allow movement execution
-    pause(1);
 end
