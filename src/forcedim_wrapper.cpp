@@ -4,17 +4,20 @@
 
 extern "C" {
 
-    __declspec(dllexport) int initDevice() {
-        return dhdOpen();
+    __declspec(dllexport) int initDevice(char ID) {
+        dhdOpenID(ID);
+        // dhdSetGravityCompensation(DHD_ON);
+        return 0;
     }
     
-    __declspec(dllexport) void closeDevice() {
-        dhdClose();
+    __declspec(dllexport) void closeDevice(char ID) {
+        dhdClose(ID);
     }
     
-    __declspec(dllexport) int getPose(double* x, double* y, double* z, double* oa, double* ob, double* og) {
-        if (dhdGetPosition(x, y, z) < 0) return -1;
-        if (dhdGetOrientationDeg(oa, ob, og) < 0) return -2;
+    __declspec(dllexport) int getPose(double* x, double* y, double* z, double* oa, double* ob, double* og, char ID) {
+        
+        if (dhdGetPosition(x, y, z, ID) < 0) return -1;
+        if (dhdGetOrientationDeg(oa, ob, og, ID) < 0) return -2;
         return 0;
     }
     }

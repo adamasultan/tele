@@ -16,7 +16,6 @@ def start_matlab():
     return eng, adsClt
 
 def matlab_global_vars():
-    """Declare global Move_command and joint variables in MATLAB."""
     eng.eval("global Move_command; Move_command = adsClt.ReadSymbolInfo('Main.Values');", nargout=0)
     eng.eval("""
         global R1_j1 R1_j2 R1_j3 R1_j4 R1_j5 R1_j6;
@@ -28,9 +27,19 @@ def matlab_global_vars():
         R1_j6 = adsClt.ReadSymbolInfo('GVL.Robot1.Inputs.Joint_Set.SubIndex_006');
     """, nargout=0)
 
+
+    eng.eval("""
+        global R2_j1 R2_j2 R2_j3 R2_j4 R2_j5 R2_j6;
+        R2_j1 = adsClt.ReadSymbolInfo('GVL.Robot2.Inputs.Joint_Set.SubIndex_001');
+        R2_j2 = adsClt.ReadSymbolInfo('GVL.Robot2.Inputs.Joint_Set.SubIndex_002');
+        R2_j3 = adsClt.ReadSymbolInfo('GVL.Robot2.Inputs.Joint_Set.SubIndex_003');
+        R2_j4 = adsClt.ReadSymbolInfo('GVL.Robot2.Inputs.Joint_Set.SubIndex_004');
+        R2_j5 = adsClt.ReadSymbolInfo('GVL.Robot2.Inputs.Joint_Set.SubIndex_005');
+        R2_j6 = adsClt.ReadSymbolInfo('GVL.Robot2.Inputs.Joint_Set.SubIndex_006');
+    """, nargout=0)
+
 def setup_matlab_vars():
-    """Start engine, setup client, and fetch all key ADS symbols."""
-    start_matlab()
+    eng.workspace["adsClt"] = adsClt
     matlab_global_vars()
     Move_command = eng.workspace["Move_command"]
     R1_j1 = eng.workspace["R1_j1"]
@@ -39,4 +48,11 @@ def setup_matlab_vars():
     R1_j4 = eng.workspace["R1_j4"]
     R1_j5 = eng.workspace["R1_j5"]
     R1_j6 = eng.workspace["R1_j6"]
-    return eng, adsClt, Move_command, R1_j1, R1_j2, R1_j3, R1_j4, R1_j5, R1_j6
+
+    R2_j1 = eng.workspace["R2_j1"]
+    R2_j2 = eng.workspace["R2_j2"]
+    R2_j3 = eng.workspace["R2_j3"]
+    R2_j4 = eng.workspace["R2_j4"]
+    R2_j5 = eng.workspace["R2_j5"]
+    R2_j6 = eng.workspace["R2_j6"]
+    return Move_command, R1_j1, R1_j2, R1_j3, R1_j4, R1_j5, R1_j6, R2_j1, R2_j2, R2_j3, R2_j4, R2_j5, R2_j6
