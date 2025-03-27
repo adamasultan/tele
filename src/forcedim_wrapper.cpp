@@ -6,7 +6,7 @@ extern "C" {
 
     __declspec(dllexport) int initDevice(char ID) {
         dhdOpenID(ID);
-        // dhdSetGravityCompensation(DHD_ON);
+        // dhdSetBrakes(DHD_OFF, ID); // for loose movement
         return 0;
     }
     
@@ -15,9 +15,8 @@ extern "C" {
     }
     
     __declspec(dllexport) int getPose(double* x, double* y, double* z, double* oa, double* ob, double* og, char ID) {
-        
-        if (dhdGetPosition(x, y, z, ID) < 0) return -1;
-        if (dhdGetOrientationDeg(oa, ob, og, ID) < 0) return -2;
+        dhdSetDevice(ID);
+        if (dhdGetPositionAndOrientationDeg(x, y, z, oa, ob, og, ID) < 0) return -1;
         return 0;
     }
     }
