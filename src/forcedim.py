@@ -40,5 +40,5 @@ def get_pose(device_id=0):
     # x.value = x.value * 1000
     # y.value = y.value *1000
     # z.value = z.value *1000
-    print([x.value*1000, y.value*1000, z.value*1000, oa.value, ob.value, og.value])
-    return [x.value*1000+190, y.value*1000, z.value*1000+308, oa.value, ob.value+90, og.value]
+    # print([x.value*1000, y.value*1000, z.value*1000, oa.value, ob.value, og.value])
+    return [x.value*1000+190, y.value*1000, -z.value*1000+308, -oa.value, -ob.value+90, -og.value]
