@@ -17,7 +17,9 @@ fdlib.getPose.argtypes = [POINTER(c_double), POINTER(c_double), POINTER(c_double
 fdlib.getPose.restype = c_int
 
 def init(device_id=0):
-    if fdlib.initDevice(device_id) < 0:
+    fail = fdlib.initDevice(device_id)
+    if fail < 0:
+        print(f"error number {fail}")
         raise RuntimeError(f"Failed to initialize haptic device {device_id}")
 
 def close(device_id=0):
@@ -29,10 +31,14 @@ def get_pose(device_id=0):
 
     result = fdlib.getPose(
         ctypes.byref(x), ctypes.byref(y), ctypes.byref(z),
-        ctypes.byref(oa), ctypes.byref(ob), ctypes.byref(og),
-        device_id
+        ctypes.byref(oa), ctypes.byref(ob), ctypes.byref(og), device_id
     )
     if result != 0:
         raise RuntimeError(f"Failed to get pose from device {device_id}, code: {result}")
     
-    return [x.value, y.value, z.value, oa.value, ob.value, og.value]
+   
+    # x.value = x.value * 1000
+    # y.value = y.value *1000
+    # z.value = z.value *1000
+    print([x.value*1000, y.value*1000, z.value*1000, oa.value, ob.value, og.value])
+    return [x.value*1000+190, y.value*1000, z.value*1000+308, oa.value, ob.value+90, og.value]

@@ -35,59 +35,105 @@ int main(int argc,
     std::cout.rdbuf()->pubsetbuf(nullptr, 512);
     std::cout << std::nounitbuf;
     std::ios_base::sync_with_stdio(false);
+    dhdEnableExpertMode();
+
 
     // Display version information.
     std::cout << "Automatic Initialization Example " << dhdGetSDKVersionStr() << std::endl;
     std::cout << "Copyright (C) 2001-2023 Force Dimension" << std::endl;
     std::cout << "All Rights Reserved." << std::endl << std::endl;
-
     // Open the first available haptic device.
-    if (drdOpen() < 0)
-    {
-        std::cout << "error: failed to open device (" << dhdErrorGetLastStr() << ")" << std::endl;
-        dhdSleep(2.0);
+    if (dhdOpenID(0) < 0 || dhdOpenID(1) < 0) {
+        std::cout << "error: failed to open DHD device (" << dhdErrorGetLastStr() << ")" << std::endl;
         return -1;
     }
+    
+    // // Then open DRD
+    // if (drdOpenID(0) < 0 || drdOpenID(1) < 0) {
+    //     std::cout << "error: failed to open DRD device (" << dhdErrorGetLastStr() << ")" << std::endl;
+    //     return -1;
+    // }
+
+
+    // // // // // dhdOpenID(0);
+    // // // // // dhdOpenID(1);
 
     // Make sure the device is compatible with the robotics library (DRD).
-    if (!drdIsSupported())
-    {
-        std::cout << "unsupported device type " << dhdGetSystemName() << std::endl;
-        std::cout << "exiting..." << std::endl;
-        dhdSleep(2.0);
-        drdClose();
-        return -1;
-    }
+    // if (!drdIsSupported(0))
+    // {
+    //     std::cout << "unsupported device type " << dhdGetSystemName(0) << std::endl;
+    //     std::cout << "exiting..." << std::endl;
+    //     dhdSleep(2.0);
+    //     drdClose();
+    //     return -1;
+    // }
 
+    // if (!drdIsSupported(1))
+    // {
+    //     std::cout << "unsupported device type " << dhdGetSystemName(1) << std::endl;
+    //     std::cout << "exiting..." << std::endl;
+    //     dhdSleep(2.0);
+    //     drdClose();
+    //     return -1;
+    // }
+    
     // Display the device type.
-    std::cout << dhdGetSystemName() << " device detected" << std::endl << std::endl;
 
+    // std::cout << dhdGetSystemName(0) << " device detected" << std::endl << std::endl;
+    // std::cout << dhdGetSystemName(1) << " device detected" << std::endl << std::endl;
+    
+    
     // Perform automatic initialization of the device.
-    if (drdAutoInit() < 0)
-    {
-        std::cout << "error: failed to initialize device (" << dhdErrorGetLastStr() << ")" << std::endl;
-        dhdSleep(2.0);
-        return -1;
-    }
+    // if (drdAutoInit(0) < 0)
+    // {
+    //     std::cout << "error: failed to initialize device (" << dhdErrorGetLastStr() << ")" << std::endl;
+    //     dhdSleep(2.0);
+    //     return -1;
+    // }
 
-    // Validate the initialization of the device.
-    if (drdCheckInit() < 0)
-    {
-        std::cout << "error: failed to validate device initialization (" << dhdErrorGetLastStr() << ")" << std::endl;
-        dhdSleep(2.0);
-        return -1;
-    }
+    // // // // // // Validate the initialization of the device.
+    // // // // // if (drdCheckInit(0) < 0)
+    // // // // // {
+    // // // // //     std::cout << "error: failed to validate device initialization (" << dhdErrorGetLastStr() << ")" << std::endl;
+    // // // // //     dhdSleep(2.0);
+    // // // // //     return -1;
+    // // // // // }
 
     // Stop the regulation thread but leaves the forces enabled on the device.
-    if (drdStop(true) < 0)
-    {
-        std::cout << "error: failed to stop robotic regulation (" << dhdErrorGetLastStr() << ")" << std::endl;
-        dhdSleep(2.0);
-        return -1;
-    }
+    // if (drdStop(true, 0) < 0)
+    // {
+    //     std::cout << "error: failed to stop robotic regulation (" << dhdErrorGetLastStr() << ")" << std::endl;
+    //     dhdSleep(2.0);
+    //     return -1;
+    // }
+
+
+
+    // if (drdAutoInit(1) < 0)
+    // {
+    //     std::cout << "error: failed to initialize device (" << dhdErrorGetLastStr() << ")" << std::endl;
+    //     dhdSleep(2.0);
+    //     return -1;
+    // }
+
+    // // // // // Validate the initialization of the device.
+    // // // // if (drdCheckInit(1) < 0)
+    // // // // {
+    // // // //     std::cout << "error: failed to validate device initialization (" << dhdErrorGetLastStr() << ")" << std::endl;
+    // // // //     dhdSleep(2.0);
+    // // // //     return -1;
+    // // // // }
+
+    // Stop the regulation thread but leaves the forces enabled on the device.
+    // if (drdStop(true, 1) < 0)
+    // {
+    //     std::cout << "error: failed to stop robotic regulation (" << dhdErrorGetLastStr() << ")" << std::endl;
+    //     dhdSleep(2.0);
+    //     return -1;
+    // }
 
     // Report initialization success.
-    std::cout << "device successfully initialized" << std::endl << std::endl;
+    std::cout << "devices successfully initialized" << std::endl << std::endl;
 
     // Display user instructions.
     std::cout << "press 'q' to quit" << std::endl << std::endl;
@@ -101,19 +147,21 @@ int main(int argc,
     double fz = 0.0;
     double lastDisplayUpdateTime = dhdGetTime();
 
+
+    std::cout<<"AAAA"<<std::endl;
     // Run the haptic loop.
     while (true)
     {
         // Apply zero force on the haptic device.
-        if (dhdSetForceAndTorqueAndGripperForce(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0) < DHD_NO_ERROR)
-        {
-            std::cout << "error: failed to render force (" << dhdErrorGetLastStr() << ")" << std::endl;
-            dhdSleep(2.0);
-            break;
-        }
+        // if (dhdSetForceAndTorqueAndGripperForce(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0) < DHD_NO_ERROR)
+        // {
+        //     std::cout << "error: failed to render force (" << dhdErrorGetLastStr() << ")" << std::endl;
+        //     dhdSleep(2.0);
+        //     break;
+        // }
 
         // Retrieve the haptic device position.
-        if (dhdGetPosition(&px, &py, &pz) < DHD_NO_ERROR)
+        if (dhdGetPosition(&px, &py, &pz, 0) < DHD_NO_ERROR)
         {
             std::cout << std::endl << "error: failed to read position (" << dhdErrorGetLastStr() << ")" << std::endl;
             dhdSleep(2.0);
@@ -121,7 +169,7 @@ int main(int argc,
         }
 
         // Retrieve the haptic device force.
-        if (dhdGetForce(&fx, &fy, &fz) < DHD_NO_ERROR)
+        if (dhdGetForce(&fx, &fy, &fz, 0) < DHD_NO_ERROR)
         {
             std::cout << std::endl << "error: failed to read forces (" << dhdErrorGetLastStr() << ")" << std::endl;
             dhdSleep(2.0);
