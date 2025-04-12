@@ -1,4 +1,4 @@
-function meca1_ETC_Shotdown(adsClt)
+function meca1_ETC_Shutdown(adsClt)
     R1_activate = adsClt.ReadSymbolInfo('GVL.Robot1.Outputs.Robot_Control.Activate');
     R1_deactivate = adsClt.ReadSymbolInfo('GVL.Robot1.Outputs.Robot_Control.Deactivate');
     R1_home = adsClt.ReadSymbolInfo('GVL.Robot1.Outputs.Robot_Control.Home');
@@ -49,9 +49,6 @@ function meca1_ETC_Shotdown(adsClt)
     adsClt.WriteAny(R1_activate.IndexGroup,R1_activate.IndexOffset,false);
     adsClt.WriteAny(R1_deactivate.IndexGroup,R1_deactivate.IndexOffset,true);
     pause(2)
-
-    
-    disp("Robot1 Dectivated");    
      
      
 end

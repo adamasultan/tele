@@ -7,7 +7,6 @@ extern "C" {
     __declspec(dllexport) int initDevice(int ID) {
         dhdEnableExpertMode();
         dhdOpenID(ID);
-        std::cout << "device successfully initialized" << std::endl << std::endl;
         return 0;
     }
     
