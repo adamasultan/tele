@@ -34,9 +34,10 @@ def get_pose(device_id=0):
     )
     if result != 0:
         raise RuntimeError(f"Failed to get pose from device {device_id}, code: {result}")
+
     return [-x.value*1000+190, # poke forward and back
             -y.value*1000, # left and right
             z.value*1000+308, # up and down
-            oa.value, # orientation of the part that holds the ob block. left and right orientation
+            -oa.value, # orientation of the part that holds the ob block. left and right orientation
             -ob.value+90, # orientation along the first block joint that holds the end effector up and down orientation
             -og.value] # orientation of the literal tip (part that holds force sensor) circular at end
