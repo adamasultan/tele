@@ -42,17 +42,4 @@ def setup_matlab_vars():
     eng.workspace["adsClt"] = adsClt
     matlab_global_vars()
     Move_command = eng.workspace["Move_command"]
-    # R1_j1 = eng.workspace["R1_j1"]
-    # R1_j2 = eng.workspace["R1_j2"]
-    # R1_j3 = eng.workspace["R1_j3"]
-    # R1_j4 = eng.workspace["R1_j4"]
-    # R1_j5 = eng.workspace["R1_j5"]
-    # R1_j6 = eng.workspace["R1_j6"]
-
-    # R2_j1 = eng.workspace["R2_j1"]
-    # R2_j2 = eng.workspace["R2_j2"]
-    # R2_j3 = eng.workspace["R2_j3"]
-    # R2_j4 = eng.workspace["R2_j4"]
-    # R2_j5 = eng.workspace["R2_j5"]
-    # R2_j6 = eng.workspace["R2_j6"]
-    return Move_command #, R1_j1, R1_j2, R1_j3, R1_j4, R1_j5, R1_j6, R2_j1, R2_j2, R2_j3, R2_j4, R2_j5, R2_j6
+    return Move_command 
