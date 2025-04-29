@@ -44,6 +44,8 @@ This project provides a Python interface to control Meca500 robots using Force D
 
    `cl forcedim_wrapper.cpp /LD /I"../forcedimension/sdk-3.17.6/include" /link /LIBPATH:"../forcedimension/sdk-3.17.6/lib" dhdms64.lib drdms64.lib`. This may need to be done in the `x64 Native Tools Command Prompt for VS 2022` on your machine.
 
+   NOTE: whenever changes must be made for future improvements, and `forcedim_wrapper.cpp` is changed, you MUST recompile for `forcedim.py` to use the new functionality.
+
 2. **Configure MATLAB and TwinCAT**
 - Ensure MATLAB can start and connect to the TwinCAT ADS client.
 - Start the TwinCAT project and Run it in Run Mode
@@ -66,7 +68,3 @@ Optionally, run `monitor.py` in a separate terminal to print live joint position
 - All critical connections (MATLAB, DLL, hardware) must be established before running.
 
 ---
-
-## License
-
-See LICENSE file (if provided) for terms.
