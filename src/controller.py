@@ -16,13 +16,13 @@ def listen_for_quit(): # function for quit thread that interrupts program
             break
 
 def limit_meca500_pose(pose):
-    limits = { # limits for meca position and orientation (can change)
-        "x": (60, 230), # forward and back position (could be 50, 240)
-        "y": (-70, 70), # left right position (could be -100, 100)
-        "z": (280, 310), # up down position (could be 260, 330)
-        "rx": (-100, 100), # left right orientation *****DOESNT WORK******
+    limits = { # limits for meca position and orientation (can change but these are currently safe within bounds)
+        "x": (60, 230), # forward and back position 
+        "y": (-70, 70), # left right position 
+        "z": (280, 310), # up down position 
+        "rx": (-100, 100), # left right orientation *****DOESNT WORK****** (the value is read from the force dimension but the meca doesnt do anything when this value chamges)
         "ry": (5, 110), # up down orientation 
-        "rz": (-180, 180), # tool tip orientation (could be -180, 180)
+        "rz": (-180, 180), # tool tip orientation 
     }
 
     def clamp(value, min_val, max_val): # helper function that doesnt let the actual meca position exceed limits 
