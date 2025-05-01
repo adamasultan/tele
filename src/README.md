@@ -17,12 +17,12 @@ This project provides a Python interface to control Meca500 robots using Force D
 
 ## File Overview
 
-- `forcedim_wrapper.cpp`: C++ DLL wrapper exposing Force Dimension SDK functions for device initialization, closure, and pose retrieval.[2]
-- `compilation.txt`: Example command for compiling the C++ wrapper as a DLL.[3]
-- `forcedim.py`: Python bindings for the DLL, providing functions to interact with the haptic device.[4]
-- `matlabconnection.py`: Utilities to start the MATLAB engine, connect to the ADS client, and set up global robot variables.[7]
-- `controller.py`: Main control logic. Initializes devices, homes robots, starts robot control threads, and manages safe shutdown. Maps haptic device pose to robot commands.[5]
-- `monitor.py`: Monitors and prints real-time joint positions from the robots using MATLAB ADS communication.[1]
+- `forcedim_wrapper.cpp`: C++ DLL wrapper exposing Force Dimension SDK functions for device initialization, closure, and pose retrieval.
+- `compilation.txt`: Example command for compiling the C++ wrapper as a DLL.
+- `forcedim.py`: Python bindings for the DLL, providing functions to interact with the haptic device.
+- `matlabconnection.py`: Utilities to start the MATLAB engine, connect to the ADS client, and set up global robot variables.
+- `controller.py`: Main control logic. Initializes devices, homes robots, starts robot control threads, and manages safe shutdown. Maps haptic device pose to robot commands.
+- `monitor.py`: Monitors and prints real-time joint positions from the robots using MATLAB ADS communication.
 
 ---
 
