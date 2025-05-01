@@ -40,9 +40,11 @@ This project provides a Python interface to control Meca500 robots using Force D
 
 1. **Compile the DLL**
 
-   Use the command in `compilation.txt` to build `forcedim_wrapper.dll` from `forcedim_wrapper.cpp`: 
+   Use the command in `compilation.txt` to build `forcedim_wrapper.dll`, `forcedim_wrapper.exp` and `forcedim_wrapper.lib` from `forcedim_wrapper.cpp`: 
+   NOTE: All three of these results from the compilation must be present for the dll to work
 
-   `cl forcedim_wrapper.cpp /LD /I"../forcedimension/sdk-3.17.6/include" /link /LIBPATH:"../forcedimension/sdk-3.17.6/lib" dhdms64.lib drdms64.lib`. This may need to be done in the `x64 Native Tools Command Prompt for VS 2022` on your machine.
+   `cl forcedim_wrapper.cpp /LD /I"../forcedimension/sdk-3.17.6/include" /link /LIBPATH:"../forcedimension/sdk-3.17.6/lib" dhdms64.lib drdms64.lib`
+   This may need to be done in the `x64 Native Tools Command Prompt for VS 2022` on your machine.
 
    NOTE: whenever changes must be made for future improvements, and `forcedim_wrapper.cpp` is changed, you MUST recompile for `forcedim.py` to use the new functionality.
 
